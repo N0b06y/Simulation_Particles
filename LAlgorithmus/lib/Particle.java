@@ -1,3 +1,4 @@
+package lib;
 public class Particle {
     public int xPos;
     public int yPos;
