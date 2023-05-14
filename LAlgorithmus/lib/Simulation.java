@@ -66,7 +66,7 @@ public class Simulation {
             for(int j=0; j<particles.size(); j++) {
                 if(i<j){//Matthesiat algorithm: (//TODO: load on website, link it here)
                     int distance = (int) Math.pow((Math.pow(particles.get(i).xPos-particles.get(j).xPos, 2)+Math.pow(particles.get(i).yPos-particles.get(j).yPos, 2)), 0.5);
-                    if(distance<=PARTICLE_SIZE) {
+                    if(distance<=2*PARTICLE_SIZE) {
                         System.out.println("distance: "+distance);
                         collide(particles.get(i), particles.get(j));
                     }
@@ -78,7 +78,7 @@ public class Simulation {
     public void collide(Particle particle_0, Particle particle_1){
         if(particle_0.xSpeed==0) { particle_0.xSpeed=0;}
         if(particle_1.xSpeed==0) { particle_1.xSpeed=0;}
-        System.out.println("collision");
+        System.out.println("----------------- collision -----------------");
         int alpha    = (int) Math.atan2(particle_0.xSpeed, particle_0.ySpeed);
         int alphaSS  = (int) Math.atan2(particle_0.xSpeed-particle_1.xSpeed, particle_0.ySpeed-particle_1.ySpeed);
         int alphaS   = (int) alpha - alphaSS;
@@ -87,9 +87,10 @@ public class Simulation {
         int s        = (int) Math.pow(V_s*V_s-(Math.sin(alphaS)*V_s)*(Math.sin(alphaS)*V_s), 0.5);
         int fullRel  = (int) Math.pow(Math.pow(particle_0.xSpeed-particle_1.xSpeed, 2)+Math.pow(particle_0.ySpeed-particle_1.ySpeed, 2), 0.5);
         int o        = (int) fullRel -s;
-        if(particle_0.xSpeed==0 && particle_0.ySpeed==0){s=0;System.out.println("Debug_00");}
-        if(particle_1.xSpeed==0 && particle_1.ySpeed==0){o=0;System.out.println("Debug_01");}
-        if(particle_0.xSpeed==0)
+        if(particle_0.xSpeed==0 && particle_0.ySpeed==0){s=0;System.out.println(">Debug_00");}
+        if(particle_1.xSpeed==0 && particle_1.ySpeed==0){o=0;System.out.println(">Debug_01");}
+        if(particle_0.xSpeed==0){ o= (int) Math.sqrt(particle_1.xSpeed^2+particle_1.ySpeed^2); s=0;System.out.println(">Debug_02");}
+        if(particle_1.xSpeed==0){ o= 0; s=(int) Math.sqrt(particle_0.xSpeed^2+particle_0.ySpeed^2);System.out.println(">Debug_03");}
 
         //s is the relative vector of p_0
         //now switch s to p_1 and o(rel Vec of p_1) to p_0

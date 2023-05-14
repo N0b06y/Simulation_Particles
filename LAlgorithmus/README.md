@@ -1,6 +1,8 @@
-## Getting Started
-
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+# Simulation_Particle
+* __Simulation of an inertial particle system with calculations of the change__
+* * _exchange of impulses_
+* * _imitated java-turtle library as engine_
+* __Miscellaneous functionalities__
 
 ## Folder Structure
 
@@ -11,8 +13,15 @@ The workspace contains two folders by default, where:
 
 Meanwhile, the compiled output files will be generated in the `bin` folder by default.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Autor
+> Matthes Neumann
+>
+>> [Lynx - Robotics](https://www.loc-lynx.com/start)
+>
+>> [Instagram](https://www.instagram.com/matthes.nmnn/)
+>
+>> [Printables](https://www.printables.com/de/@MatthesNeuman_747832)
+>
+>> [Patreon](https://www.patreon.com/MatthesNeumann/membership)
+>
+>> [Google Developer](g.dev/aristocode)
