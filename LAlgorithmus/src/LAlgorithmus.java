@@ -1,3 +1,6 @@
+import lib.Particle;
+import lib.Simulation;
+
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
