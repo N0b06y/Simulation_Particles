@@ -1,11 +1,10 @@
-import lib.Particle;
-import lib.Simulation;
+import lib.*;
 
-import java.sql.Time;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+
+import static lib.Test.*;
 
 public class LAlgorithmus {
 
@@ -31,19 +30,13 @@ public class LAlgorithmus {
         // System.out.println("Name:"+name);
         // Friend first = new Friend(name, 17);
         // first.printValues(); 
-        // Meth Methiuww = new Meth();
-        // Methiuww.primeNumbers(100);
+        // Meth Promethium = new Meth();
+        // Promethium.primeNumbers(100);
 //Simulation
-        Particle josh       = new Particle(-100, 0, 0, 0);
-        Particle jonathan   = new Particle(100, 0, -2, 0);
-        // Prticle 0           = new Particle(Random.randint(-100,100), );
-        Simulation simulation = new Simulation();
-        simulation.addParticle(josh);
-        simulation.addParticle(jonathan);
-        while(true){
-            simulation.update();
-            TimeUnit.MILLISECONDS.sleep(1);
-        }
+        //Simulation simulation = new Simulation();
+        //simulation.simple00();
+        //simulation.testSimple00();
+        simulation();
 //Graph
     //     Scanner scanner = new Scanner(System.in);
 
@@ -71,7 +64,7 @@ public class LAlgorithmus {
     //     System.out.println(storage);
     //     System.out.println("storage.size():");
     //     System.out.println(storage.size());
-    //     System.out.println("xStrech:");
+    //     System.out.println("xStretch:");
     //     System.out.println(xStretch);
     //     System.out.println("STRETCH_Y:");
     //     System.out.println(STRETCH_Y);
