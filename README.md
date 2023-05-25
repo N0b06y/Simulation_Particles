@@ -13,7 +13,7 @@ The workspace contains two folders by default, where:
 
 Meanwhile, the compiled output files will be generated in the `bin` folder by default.
 
-## Autor
+## Author
 > Matthes Neumann
 >
 >> [Lynx - Robotics](https://www.loc-lynx.com/start)
