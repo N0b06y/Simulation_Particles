@@ -15,20 +15,19 @@ public class Particle {
     }
     public void addSpeedFromAngle(double speed, double angle) {
         //be confused! I think it's because the view is turned by 180 degrees
-        //TODO: find out why it's like that
-        //while(angle<0){angle+=2*PI;}
-        System.out.println(">"+speed);
-        this.xSpeed  +=   (cos(angle) *speed);
-        System.out.println("- xSpeed+"+(cos(angle) *speed)+"="+this.xSpeed);
-        this.ySpeed  +=   (sin(angle) *speed);
-        System.out.println("- ySpeed+"+(sin(angle) *speed)+"="+this.ySpeed);
+        // while(angle<0){angle+=2*PI;}
+        //System.out.println(">"+speed);
+        this.xSpeed  +=   round(cos(angle) *speed);
+        //System.out.println("- xSpeed+"+(cos(angle) *speed)+"="+this.xSpeed);
+        this.ySpeed  +=   round((sin(angle) *speed));
+        //System.out.println("- ySpeed+"+(sin(angle) *speed)+"="+this.ySpeed);
     }
     public void subSpeedFromAngle(double speed, double angle) {
-        System.out.println(">"+(-speed));
-        this.xSpeed  -=   (cos(angle) *speed);
-        System.out.println("- xSpeed-"+(cos(angle) *speed)+"="+this.xSpeed);
-        this.ySpeed  -=   (sin(angle) *speed);
-        System.out.println("- ySpeed-"+(sin(angle) *speed)+"="+this.ySpeed);
+        //System.out.println(">"+(speed));
+        this.xSpeed  -=   round(cos(angle) *speed);
+        //System.out.println("- xSpeed-"+(cos(angle) *speed)+"="+this.xSpeed);
+        this.ySpeed  -=   round((sin(angle) *speed));
+        //System.out.println("- ySpeed-"+(sin(angle) *speed)+"="+this.ySpeed);
     }
     public void resetSpeed() {
         this.xSpeed=0;

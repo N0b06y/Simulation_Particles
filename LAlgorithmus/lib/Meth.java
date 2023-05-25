@@ -1,6 +1,7 @@
 package lib;
 import java.util.ArrayList;
 
+import static java.lang.Math.*;
 import static java.lang.Math.PI;
 
 public class Meth {
@@ -29,23 +30,27 @@ public class Meth {
         return elements;
     }
     public static int diameter(int Δx, int Δy) {
-        return (int) Math.pow((Math.pow(Δx, 2)+Math.pow(Δy, 2)), 0.5);
+        return (int) pow((pow(Δx, 2)+ pow(Δy, 2)), 0.5);
     }
-    public static double atan3(double x, double y) {
+    public static double atan3(double x, double y) {//TODO: redundant, delete
         if(x==0 && y==0) {
             return 0;
         } else if(x<0&&y==0){
             return -1*PI;
         }else if(x>0&&y==0){
-            return PI;
+            return 0;
         }else if (x==0 && y<0) {
-            return -1* PI;
+            return -1* PI/2;
         } else if (x==0 && y>0) {
-            return 1* PI;
-        } else if(x<0&&y<0) {
-            return -Math.atan(x/y);
-        } else {
-            return Math.atan(x/y);
+            return 1* PI/2;
+        } else if( x<0&&y>0) {//redundant
+            //return -atan2(abs(x),abs(y));
+            //return (PI)+atan2(y,x);
+            return atan2(y,x);
+        } else if(x>0&&y<0) {
+            return atan2(y,x);
+        }else {
+            return atan2(y,x);
         }
     }
 }

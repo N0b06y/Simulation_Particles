@@ -33,10 +33,11 @@ public class LAlgorithmus {
         // Meth Promethium = new Meth();
         // Promethium.primeNumbers(100);
 //Simulation
-        //Simulation simulation = new Simulation();
-        //simulation.simple00();
+        //TODO: delete all redundant comments
+        Simulation simulation = new Simulation();
+        simulation.simple00();
         //simulation.testSimple00();
-        simulation();
+        //simulationTest();
 //Graph
     //     Scanner scanner = new Scanner(System.in);
 
