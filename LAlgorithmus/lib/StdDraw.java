@@ -631,7 +631,7 @@ package lib;
      private static Graphics2D offscreen, onscreen;
  
      // singleton for callbacks: avoids generation of extra .class files
-     private static StdDraw std = new StdDraw();
+     private static final StdDraw std = new StdDraw();
  
      // the frame for drawing to the screen
      private static JFrame frame;

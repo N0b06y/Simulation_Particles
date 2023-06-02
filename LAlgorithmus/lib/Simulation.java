@@ -20,7 +20,7 @@ public class Simulation {
         Turtle.setCanvasSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         this.turtle.speed(0);
         this.turtle.hide();
-        Turtle.refreshMode(2);  //refresh screen with #update() every frame
+        Turtle.refreshMode(2);
     }
 
     // Scenarios
@@ -53,10 +53,8 @@ public class Simulation {
         turtle.clear();
         stayInField();
         checkCollisions();
-        // System.out.print(particles.get(0).xSpeed);System.out.print(", ");System.out.println(particles.get(1).xSpeed);
         //Particles_________________________
         for (Particle particle : particles) {
-            // System.out.println("update");
             updatePosition(particle);
             particle.printSpeeds();
         }
@@ -65,13 +63,11 @@ public class Simulation {
             turtle.setPosition(particle.xPos, particle.yPos);
             turtle.down();
             turtle.dot(Color.black, PARTICLE_SIZE);
-            // turtle.forward(1);
             turtle.up();
         }
         Turtle.update();
     }
     public void updatePosition(Particle particle){
-        // System.out.println("update");
         particle.xPos += particle.xSpeed;
         particle.yPos += particle.ySpeed;
     }
@@ -90,7 +86,7 @@ public class Simulation {
     public void checkCollisions() {
         for(int i=0; i<particles.size(); i++) {
             for(int j=0; j<particles.size(); j++) {
-                if(i<j){//Matthesiat algorithm: (//TODO: load on website, link it here)
+                if(i<j){//Matthesiat algorithm
                     int distance = (int) pow((pow(particles.get(i).xPos-particles.get(j).xPos, 2)+ pow(particles.get(i).yPos-particles.get(j).yPos, 2)), 0.5);
                     if(distance<=PARTICLE_SIZE) {
                         System.out.println("distance: "+distance);
@@ -102,46 +98,22 @@ public class Simulation {
     }
     public static void collide(Particle particle_0, Particle particle_1){
         double energie=Meth.diameter(particle_0.xSpeed, particle_0.ySpeed)+Meth.diameter(particle_1.xSpeed, particle_1.ySpeed);
-        //System.out.println("Energy:"+energie);
-        //if(particle_0.xSpeed==0) { particle_0.xSpeed=0;}
-        //if(particle_1.xSpeed==0) { particle_1.xSpeed=0;}
-        //System.out.println("----------------- collision -----------------");
-        //System.out.println("particle_0: "+particle_0.xSpeed+", "+particle_0.ySpeed);
-        //System.out.println("particle_1: "+particle_1.xSpeed+", "+particle_1.ySpeed);
-        double a    =  atan2(particle_0.ySpeed, particle_0.xSpeed);//
-        //System.out.println("Alpha: "+toDegrees(a));
+        double a    =  atan2(particle_0.ySpeed, particle_0.xSpeed);
         double aSS  = atan2(particle_0.ySpeed-particle_1.ySpeed, particle_0.xSpeed-particle_1.xSpeed);
-        //System.out.println(particle_0.xSpeed+particle_1.xSpeed);
-        //System.out.println(particle_0.ySpeed+particle_1.ySpeed);
-        //System.out.println("AlphaSS: "+toDegrees(aSS));
         double aS   = a - aSS;
-        //System.out.println("AlphaS: "+toDegrees(aS));
         double V_s      =  sqrt((pow(particle_0.xSpeed,2)+ pow(particle_0.ySpeed, 2)));
-        //System.out.println("V_s: "+V_s);
         double s        =  sqrt(V_s*V_s-(sin(aS)*V_s)*(sin(aS)*V_s));
-        //System.out.println("s: "+s);
         double fullRel  =  pow(pow(particle_0.xSpeed-particle_1.xSpeed, 2)+ pow(particle_0.ySpeed-particle_1.ySpeed, 2), 0.5);
-        //System.out.println("fullRel: "+fullRel);
         double other        =  (fullRel -s);//think of 'other' being watched inventively
-        //System.out.println("o: "+other);
-        //System.out.println("-----------------------------------------------------------------");
-        //if(particle_0.xSpeed==0 && particle_0.ySpeed==0){s=0;System.out.println(">Debug_00");}
-        //if(particle_1.xSpeed==0 && particle_1.ySpeed==0){o=0;System.out.println(">Debug_01");}
-        //if(particle_0.xSpeed==0){ o= (int) Math.sqrt(particle_1.xSpeed^2+particle_1.ySpeed^2); s=0;System.out.println(">Debug_02");}
-        //if(particle_1.xSpeed==0){ o= 0; s=(int) Math.sqrt(particle_0.xSpeed^2+particle_0.ySpeed^2);System.out.println(">Debug_03");}
 
         //s is the relative vector of p_0
         //now switch s to p_1 and o(rel Vec of p_1) to p_0
         System.out.println("particle_0: xS="+particle_0.xSpeed+", yS="+particle_0.ySpeed);
         System.out.println("particle_1: xS="+particle_1.xSpeed+", yS="+particle_1.ySpeed);
-        //subtract old relative velocity
-        //DEBUG IDEA____________________________________
-        //System.out.println("CCC DEBUG ___________");
-        //System.out.println("other "+other);
         //all speeds are already calculated, now multiplied with mass to get the impact
         double self_impact = s* particle_0.mass;
         double other_impact = other* particle_1.mass;
-
+        //subtract old relative velocity
         particle_0.subSpeedFromAngle(self_impact, aSS);
         particle_1.subSpeedFromAngle(-other_impact, aSS);//o now two times inverted, works with one x value
         System.out.println("SET relSPEED TO 0");
@@ -157,16 +129,5 @@ public class Simulation {
 
         energie=((particle_0.mass+particle_1.mass)/2)*Meth.diameter(particle_0.xSpeed, particle_0.ySpeed)+Meth.diameter(particle_1.xSpeed, particle_1.ySpeed);
         System.out.println("Energy:"+energie);
-        //DEBUGGING_____________________________________________________________________
-        //System.out.println("angle: "+ aS);
-        //System.out.println("V_s: "+V_s);
-        //System.out.println("s: "+s);
-        //System.out.println("o: "+other);
-        //System.out.println("fullRel: "+fullRel);
-
-        // particle_0.xSpeed *= -1;
-        // particle_0.ySpeed *= -1;
-        // particle_1.xSpeed *= -1;
-        // particle_1.ySpeed *= -1;
     }
 }

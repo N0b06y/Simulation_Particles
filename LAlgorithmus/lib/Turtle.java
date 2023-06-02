@@ -499,7 +499,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
     private boolean isPenDown=true;
     private boolean isFilling=false;
     private boolean isVisible=true;
-    private ArrayList<Point2D.Double> polygon=new ArrayList<Point2D.Double>();
+    private final ArrayList<Point2D.Double> polygon=new ArrayList<Point2D.Double>();
     //temporary storage
     private Long _time;
     private Point2D.Double _location;
@@ -1916,7 +1916,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
             Turtle animatedTurtle=null;
             double percent=1;
             Long t2;
-            t2=new Long(0);
+            t2= Long.valueOf(0);
             if (renderTime<turtleStates.lastKey())
             {
                 animatedTurtle=getStateTurtle(turtleStates.ceilingEntry(renderTime).getValue());
@@ -2220,7 +2220,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
             bob.left(5);
             if(i%10==0)bob.dot("orange");//Draws dots when i is a multiple of 10.
         }
-        bob.saveGCODE("test.gcode");
+        saveGCODE("test.gcode");
     }
 
     /**
@@ -2323,8 +2323,8 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
             }
             updateAll();
         }
-        this.x=e.getX();
-        this.y=e.getY();
+        x=e.getX();
+        y=e.getY();
     }
 
     /**
@@ -2394,7 +2394,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
                     try
                     {
                         Class cls = Class.forName(className);
-                        Object clsInstance = (Object) cls.newInstance();
+                        Object clsInstance = cls.newInstance();
                         Method m = clsInstance.getClass().getMethod(methodName, t.getClass());
                         m.invoke(clsInstance, t);
                     }
@@ -2403,7 +2403,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
                         try
                         {
                             Class cls = Class.forName(className);
-                            Object clsInstance = (Object) cls.newInstance();
+                            Object clsInstance = cls.newInstance();
                             Method m = clsInstance.getClass().getMethod(methodName, t.getClass(), keyText.getClass());
                             m.invoke(clsInstance, t, keyText);
                         }
@@ -2412,7 +2412,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
                             try
                             {
                                 Class cls = Class.forName(className);
-                                Object clsInstance = (Object) cls.newInstance();
+                                Object clsInstance = cls.newInstance();
                                 Method m = clsInstance.getClass().getMethod(methodName);
                                 m.invoke(clsInstance);
                             }
@@ -2509,7 +2509,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      */
     public static int mouseX()
     {
-        return turtle.x;
+        return x;
     }
 
     /**
@@ -2519,7 +2519,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      */
     public static int mouseY()
     {
-        return turtle.y;
+        return y;
     }
 
     /**
@@ -2539,7 +2539,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      */
     public static boolean mouseButton1()
     {
-        return (turtle.modifiers&16)==16;
+        return (modifiers&16)==16;
     }
 
      /**
@@ -2549,7 +2549,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      */
     public static boolean mouseButton2()
     {
-        return (turtle.modifiers&8)==8;
+        return (modifiers&8)==8;
     }
 
     /**
@@ -2559,7 +2559,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      */
     public static boolean mouseButton3()
     {
-        return (turtle.modifiers&4)==4;
+        return (modifiers&4)==4;
     }
 
     /**
@@ -2637,7 +2637,7 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
 					//System.out.printf("%f %f %f %f",x1,y1,x2,y2);
 					if(t._isPenDown)
 					{
-						out.printf("G1 X%.4f Y%.4f E%.4f\n",screenX(x1)*1.0/width*100,screenY(y1)*1.0/height*100,e);
+						out.printf("G1 X%.4f Y%.4f E%.4f\n", screenX(x1) /width*100, screenY(y1) /height*100,e);
 					}
 					else
 					{
