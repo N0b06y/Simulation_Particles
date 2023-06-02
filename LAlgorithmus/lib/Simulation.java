@@ -1,12 +1,10 @@
 package lib;
 
-import java.util.ArrayList;
 import java.awt.*;
-import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.Math.*;
-import static lib.Meth.atan3;
 
 public class Simulation {
 

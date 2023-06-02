@@ -5,13 +5,24 @@ import static java.lang.Math.*;
 public class Particle {
     public int xPos;
     public int yPos;
-    public int xSpeed;
-    public int ySpeed;
-    public Particle(int xPos, int yPos, int xSpeed, int ySpeed){
-        this.xPos = xPos;
-        this.yPos = yPos;
-        this.xSpeed = xSpeed;
-        this.ySpeed = ySpeed;
+    public double xSpeed;
+    public double ySpeed;
+    public double mass;
+    //Init without mass input (mass=1)
+    public Particle(int _xPos, int _yPos, int _xSpeed, int _ySpeed){
+        this.xPos = _xPos;
+        this.yPos = _yPos;
+        this.xSpeed = _xSpeed;
+        this.ySpeed = _ySpeed;
+        this.mass = 1;
+    }
+    //Init with mass input
+    public Particle(int _xPos, int _yPos, int _xSpeed, int _ySpeed, float _mass){
+        this.xPos = _xPos;
+        this.yPos = _yPos;
+        this.xSpeed = _xSpeed;
+        this.ySpeed = _ySpeed;
+        this.mass = _mass;
     }
     public void addSpeedFromAngle(double speed, double angle) {
         //be confused! I think it's because the view is turned by 180 degrees

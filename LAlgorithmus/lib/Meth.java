@@ -29,7 +29,7 @@ public class Meth {
         //TODO: implement
         return elements;
     }
-    public static int diameter(int Δx, int Δy) {
+    public static int diameter(double Δx, double Δy) {
         return (int) pow((pow(Δx, 2)+ pow(Δy, 2)), 0.5);
     }
     public static double atan3(double x, double y) {//TODO: redundant, delete
