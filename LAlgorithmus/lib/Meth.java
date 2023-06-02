@@ -32,25 +32,4 @@ public class Meth {
     public static int diameter(double Δx, double Δy) {
         return (int) pow((pow(Δx, 2)+ pow(Δy, 2)), 0.5);
     }
-    public static double atan3(double x, double y) {//TODO: redundant, delete
-        if(x==0 && y==0) {
-            return 0;
-        } else if(x<0&&y==0){
-            return -1*PI;
-        }else if(x>0&&y==0){
-            return 0;
-        }else if (x==0 && y<0) {
-            return -1* PI/2;
-        } else if (x==0 && y>0) {
-            return 1* PI/2;
-        } else if( x<0&&y>0) {//redundant
-            //return -atan2(abs(x),abs(y));
-            //return (PI)+atan2(y,x);
-            return atan2(y,x);
-        } else if(x>0&&y<0) {
-            return atan2(y,x);
-        }else {
-            return atan2(y,x);
-        }
-    }
 }

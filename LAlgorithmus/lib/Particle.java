@@ -28,16 +28,16 @@ public class Particle {
         //be confused! I think it's because the view is turned by 180 degrees
         // while(angle<0){angle+=2*PI;}
         //System.out.println(">"+speed);
-        this.xSpeed  +=   round(cos(angle) *speed);
+        this.xSpeed  +=   (cos(angle) *speed)/this.mass;
         //System.out.println("- xSpeed+"+(cos(angle) *speed)+"="+this.xSpeed);
-        this.ySpeed  +=   round((sin(angle) *speed));
+        this.ySpeed  +=   (sin(angle) *speed)/this.mass;
         //System.out.println("- ySpeed+"+(sin(angle) *speed)+"="+this.ySpeed);
     }
     public void subSpeedFromAngle(double speed, double angle) {
         //System.out.println(">"+(speed));
-        this.xSpeed  -=   round(cos(angle) *speed);
+        this.xSpeed  -=   (cos(angle) *speed)/this.mass;
         //System.out.println("- xSpeed-"+(cos(angle) *speed)+"="+this.xSpeed);
-        this.ySpeed  -=   round((sin(angle) *speed));
+        this.ySpeed  -=   (sin(angle) *speed)/this.mass;
         //System.out.println("- ySpeed-"+(sin(angle) *speed)+"="+this.ySpeed);
     }
     public void resetSpeed() {

@@ -26,7 +26,7 @@ public class Simulation {
     // Scenarios
     public void simple00() throws InterruptedException {
         Particle josh = new Particle(0, 0,0,0);
-        Particle jonathan = new Particle(100,100,-5,-5);
+        Particle jonathan = new Particle(100,0,-5,0, 2);
         Simulation simulation=new Simulation();
         simulation.addParticle(josh);
         simulation.addParticle(jonathan);
@@ -138,20 +138,24 @@ public class Simulation {
         //DEBUG IDEA____________________________________
         //System.out.println("CCC DEBUG ___________");
         //System.out.println("other "+other);
-        particle_0.subSpeedFromAngle(s, aSS);
-        particle_1.subSpeedFromAngle(-other, aSS);//o now two times inverted, works with one x value
+        //all speeds are already calculated, now multiplied with mass to get the impact
+        double self_impact = s* particle_0.mass;
+        double other_impact = other* particle_1.mass;
+
+        particle_0.subSpeedFromAngle(self_impact, aSS);
+        particle_1.subSpeedFromAngle(-other_impact, aSS);//o now two times inverted, works with one x value
         System.out.println("SET relSPEED TO 0");
         System.out.println("particle_0: xS="+particle_0.xSpeed+", yS="+particle_0.ySpeed);
         System.out.println("particle_1: xS="+particle_1.xSpeed+", yS="+particle_1.ySpeed);
         //add the opposite's speed
-        particle_0.addSpeedFromAngle(-other, aSS);
-        particle_1.addSpeedFromAngle(s, aSS);
+        particle_0.addSpeedFromAngle(-other_impact, aSS);
+        particle_1.addSpeedFromAngle(self_impact, aSS);
         int energy = 0;
         System.out.println("Final results");
         System.out.println("particle_0: xS="+particle_0.xSpeed+", yS="+particle_0.ySpeed);
         System.out.println("particle_1: xS="+particle_1.xSpeed+", yS="+particle_1.ySpeed);
 
-        energie=Meth.diameter(particle_0.xSpeed, particle_0.ySpeed)+Meth.diameter(particle_1.xSpeed, particle_1.ySpeed);
+        energie=((particle_0.mass+particle_1.mass)/2)*Meth.diameter(particle_0.xSpeed, particle_0.ySpeed)+Meth.diameter(particle_1.xSpeed, particle_1.ySpeed);
         System.out.println("Energy:"+energie);
         //DEBUGGING_____________________________________________________________________
         //System.out.println("angle: "+ aS);
